@@ -23,16 +23,16 @@ const educationData = [
     title: "CS50: Introduction to Computer Science",
     institution: "Harvard University (edX)",
     location: "Online",
-    period: "2021",
+    period: "2024",
     description: "An in-depth introduction to computer science, covering fundamental concepts such as algorithms, data structures, and web development.",
     side: "left",
   },
   {
-    title: "Data Structures & Algorithms",
-    institution: "mycodeschool - YouTube",
+    title: "Academy for PhD Training in Statistics (APTS)",
+    institution: "The University of Warwick",
     location: "Online",
-    period: "2024",
-    description: "Covered arrays, linked lists, stacks, queues, trees, graphs, and sorting algorithms through this course. The hands-on exercises helped me learn efficient data organisation and processing, crucial for advanced coding and analysis tasks.",
+    period: "2025 - Present",
+    description: "I am currently studying the Academy for PhD Training in Statistics (APTS) course, which is designed to provide PhD students with knowledge of advanced statistical methods and computational techniques",
     side: "right",
   },
 ];
@@ -42,12 +42,27 @@ const EducationItem = ({ item }) => {
   const { scrollY } = useScroll();
   const [shouldShow, setShouldShow] = useState(true);
   const prevScrollY = useRef(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const { inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  
   useEffect(() => {
     const handleScroll = () => {
       const element = ref.current;
@@ -90,7 +105,7 @@ const EducationItem = ({ item }) => {
   const variants = {
     hidden: { 
       opacity: 0, 
-      x: item.side === 'left' ? -50 : 50,
+      x: isMobile ? 50 : (item.side === 'left' ? -50 : 50),
       transition: { duration: 0.3, ease: "easeInOut" }
     },
     visible: { 
@@ -106,27 +121,31 @@ const EducationItem = ({ item }) => {
       variants={variants}
       initial="hidden"
       animate={shouldShow ? "visible" : "hidden"}
-      className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 border border-blue-500/30"
+      className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg shadow-lg p-3 sm:p-6 hover:shadow-2xl transition-shadow duration-300 border border-blue-500/30"
     >
-      <h3 className="text-2xl font-bold mb-2 text-blue-300">{item.title}</h3>
-      <h4 className="text-xl text-blue-400 mb-2">{item.institution}</h4>
-      <div className="flex items-center text-gray-300 mb-3">
-        <Calendar size={16} className="mr-2 text-blue-400" />
-        <span className="mr-4">{item.period}</span>
-        <MapPin size={16} className="mr-2 text-blue-400" />
-        <span>{item.location}</span>
+      <h3 className="text-base sm:text-2xl font-bold mb-1 sm:mb-2 text-blue-300">{item.title}</h3>
+      <h4 className="text-sm sm:text-xl text-blue-400 mb-1 sm:mb-2">{item.institution}</h4>
+      <div className="flex flex-col sm:flex-row text-xs sm:text-base items-start sm:items-center text-gray-300 mb-2 sm:mb-3">
+        <div className="flex items-center mb-1 sm:mb-0 sm:mr-4">
+          <Calendar size={12} className="mr-1 sm:mr-2 text-blue-400" />
+          <span>{item.period}</span>
+        </div>
+        <div className="flex items-center">
+          <MapPin size={12} className="mr-1 sm:mr-2 text-blue-400" />
+          <span>{item.location}</span>
+        </div>
       </div>
-      <p className="text-gray-300 leading-relaxed">{item.description}</p>
+      <p className="text-xs sm:text-base text-gray-300 leading-relaxed">{item.description}</p>
     </motion.div>
   );
 };
 
 const EducationSection = () => {
   return (
-    <section className="py-16 text-white bg-[rgb(6,8,21)]" id="education">
+    <section className="py-8 sm:py-16 text-white bg-[rgb(6,8,21)]" id="education">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="text-5xl font-extrabold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
+          className="text-4xl sm:text-5xl font-extrabold text-center mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -135,26 +154,26 @@ const EducationSection = () => {
           My Education
         </motion.h2>
         <div className="relative">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+          <div className="absolute top-0 sm:left-1/2 left-[10%] transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
           {educationData.map((item, index) => (
-            <div key={index} className="flex justify-between items-center w-full mb-8">
+            <div key={index} className="flex justify-between items-center w-full mb-6 sm:mb-8">
               {item.side === "left" ? (
                 <>
-                  <div className="w-5/12 pr-4">
+                  <div className="w-[85%] sm:w-5/12 ml-auto sm:ml-0 sm:pr-4">
                     <EducationItem item={item} />
                   </div>
-                  <div className="z-20 flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 border-4 border-gray-900 shadow-lg">
-                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                  <div className="z-20 absolute left-[10%] sm:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-4 h-4 sm:w-8 sm:h-8 rounded-full bg-blue-600 border-2 sm:border-4 border-gray-900 shadow-lg">
+                    <div className="w-1 h-1 sm:w-2 sm:h-2 rounded-full bg-white"></div>
                   </div>
-                  <div className="w-5/12"></div>
+                  <div className="hidden sm:block w-5/12"></div>
                 </>
               ) : (
                 <>
-                  <div className="w-5/12"></div>
-                  <div className="z-20 flex items-center justify-center w-8 h-8 rounded-full bg-purple-600 border-4 border-gray-900 shadow-lg">
-                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                  <div className="hidden sm:block w-5/12"></div>
+                  <div className="z-20 absolute left-[10%] sm:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-4 h-4 sm:w-8 sm:h-8 rounded-full bg-purple-600 border-2 sm:border-4 border-gray-900 shadow-lg">
+                    <div className="w-1 h-1 sm:w-2 sm:h-2 rounded-full bg-white"></div>
                   </div>
-                  <div className="w-5/12 pl-4">
+                  <div className="w-[85%] sm:w-5/12 ml-auto sm:ml-0 sm:pl-4">
                     <EducationItem item={item} />
                   </div>
                 </>

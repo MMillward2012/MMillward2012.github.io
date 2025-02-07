@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Menu, X, Code2 } from 'lucide-react';
 
 const Navbar = ({ scrollToSection, isMenuOpen, setIsMenuOpen }) => {
   const [activePage, setActivePage] = useState('home');
 
-  const navItems = [
+  // Wrap navItems in useMemo to avoid ESLint warning
+  const navItems = useMemo(() => [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'education', label: 'Education' },
     { id: 'projects', label: 'Projects' },
     { id: 'contact', label: 'Contact' }
-  ];
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,24 +31,20 @@ const Navbar = ({ scrollToSection, isMenuOpen, setIsMenuOpen }) => {
       setActivePage(newActivePage);
     };
 
-    const debouncedScroll = debounce(handleScroll, 30); // Reduce debounce time
+    const debouncedScroll = debounce(handleScroll, 30);
     window.addEventListener('scroll', debouncedScroll);
-    handleScroll(); // Trigger scroll handling on mount
+    handleScroll(); 
 
     return () => window.removeEventListener('scroll', debouncedScroll);
-  },
-);
+  }, [navItems]);
 
   return (
     <nav className={`fixed w-full z-50 transition-all font-poppins duration-200 ${isMenuOpen || activePage !== 'home' ? 'bg-[#060815] shadow-lg' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-5">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <img 
-              src="/index_pic2.png" // Update the path to your image
-              alt="Matthew Millward" 
-              className="h-8 w-8 rounded-full mr-6" // Adjust size and margin as needed
-            />
+            {/* Using Lucide Settings Icon */}
+            <Code2 className="h-8 w-8 mr-6 text-white" />
             <a href="#home" className="text-white font-bold text-xl font-poppins">Matthew's Portfolio</a>
           </div>
           <div className="hidden md:block">

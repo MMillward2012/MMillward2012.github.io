@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://MMillward2012.github.io/",
+  "homepage": "https://MMillward2012.github.io",
   "dependencies": {
     "@headlessui/react": "^2.1.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -17,6 +17,7 @@
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
     "react-typed": "^2.0.12",
+    "styled-components": "^6.1.14",
     "tailwindcss": "^3.4.10",
     "web-vitals": "^2.1.4"
   },
