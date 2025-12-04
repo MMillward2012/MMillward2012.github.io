@@ -20,11 +20,11 @@ const educationData = [
     side: "right",
   },  
   {
-    title: "CS50: Introduction to Computer Science",
-    institution: "Harvard University (edX)",
-    location: "Online",
+    title: "Google DeepMind Internship",
+    institution: "Google DeepMind",
+    location: "London, UK",
     period: "2024",
-    description: "An in-depth introduction to computer science, covering fundamental concepts such as algorithms, data structures, and web development.",
+    description: "Research internship focusing on artificial intelligence and machine learning applications. Worked on cutting-edge AI research projects and gained exposure to advanced neural network architectures.",
     side: "left",
   },
   {

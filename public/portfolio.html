@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matthew Millward</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       PREMIUM PORTFOLIO - Pure CSS
+       No frameworks, complete control
+       ======================================== */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #08080a;
+      --text: #f5f5f7;
+      --text-secondary: #86868b;
+      --text-muted: #515154;
+      --accent: #c9a227;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ========================================
+       LAYOUT
+       ======================================== */
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 32px; }
+    }
+
+    section {
+      padding: 160px 0;
+    }
+
+    /* ========================================
+       NAVIGATION
+       ======================================== */
+    
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 32px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: difference;
+    }
+
+    .logo {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 48px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* ========================================
+       HERO - The most important section
+       ======================================== */
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 120px;
+    }
+
+    .hero-content {
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: clamp(72px, 12vw, 180px);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 48px;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent);
+    }
+
+    .hero-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 120px;
+      align-items: end;
+    }
+
+    .hero-text {
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 480px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 64px;
+      justify-content: flex-end;
+    }
+
+    .hero-meta-item {
+      text-align: right;
+    }
+
+    .hero-meta-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-meta-value {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    /* ========================================
+       SECTION HEADERS
+       ======================================== */
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 80px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ========================================
+       ABOUT
+       ======================================== */
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 120px;
+    }
+
+    .about-text h2 {
+      font-size: 42px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+
+    .about-text p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .about-details {
+      padding-top: 8px;
+    }
+
+    .detail-group {
+      margin-bottom: 48px;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .detail-value {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+    }
+
+    .skills-list span {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* ========================================
+       EXPERIENCE
+       ======================================== */
+    
+    .experience-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 80px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-item:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .experience-date {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .experience-content h3 {
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .experience-role {
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .experience-desc {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* ========================================
+       PROJECTS
+       ======================================== */
+    
+    .project-item {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-item:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .project-title {
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    .project-metric {
+      font-size: 14px;
+      color: var(--accent);
+      padding: 8px 16px;
+      border: 1px solid var(--accent);
+    }
+
+    .project-desc {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+
+    /* ========================================
+       CONTACT
+       ======================================== */
+    
+    .contact-content h2 {
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 48px;
+    }
+
+    .contact-email {
+      font-size: 24px;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      transition: border-color 0.3s;
+    }
+
+    .contact-email:hover {
+      border-color: var(--accent);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+    }
+
+    .contact-links a {
+      font-size: 15px;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .contact-links a:hover {
+      color: var(--text);
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    
+    footer {
+      padding: 48px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ========================================
+       ANIMATIONS
+       ======================================== */
+    
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1,
+    .hero-text,
+    .hero-meta {
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero h1 { animation-delay: 0.1s; opacity: 0; }
+    .hero-text { animation-delay: 0.3s; opacity: 0; }
+    .hero-meta { animation-delay: 0.5s; opacity: 0; }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    
+    @media (max-width: 1024px) {
+      .hero-intro {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      
+      .hero-meta {
+        justify-content: flex-start;
+      }
+      
+      .hero-meta-item {
+        text-align: left;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
+      
+      .experience-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 24px 32px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      section {
+        padding: 100px 0;
+      }
+      
+      .hero {
+        padding-bottom: 80px;
+      }
+      
+      .hero-meta {
+        flex-direction: column;
+        gap: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Matthew Millward</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>
+          <span>Matthew</span>
+          <span class="accent">Millward</span>
+        </h1>
+        <div class="hero-intro">
+          <p class="hero-text">
+            Quantitative researcher and machine learning engineer 
+            building high-performance trading systems and AI infrastructure.
+          </p>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <div class="hero-meta-label">Currently</div>
+              <div class="hero-meta-value">Durham University</div>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-label">Incoming</div>
+              <div class="hero-meta-value">Google DeepMind</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <span class="section-title">About</span>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Building at the intersection of mathematics and machine learning</h2>
+          <p>
+            Third-year Mathematics student at Durham University with a predicted 
+            First Class Honours. My work focuses on quantitative finance and 
+            deep learning, from Monte Carlo simulations running at 200M+ paths 
+            per second to NLP models with sub-millisecond inference.
+          </p>
+          <p>
+            Incoming AI Research Intern at Google DeepMind, where I'll be 
+            developing sentiment-driven trading signals using transformer architectures.
+          </p>
+        </div>
+        <div class="about-details">
+          <div class="detail-group">
+            <div class="detail-label">Education</div>
+            <div class="detail-value">
+              BSc Mathematics, Durham University<br>
+              First Class (Predicted) · 85% Average
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Recognition</div>
+            <div class="detail-value">
+              TAROS Award for AI Research<br>
+              UK Mathematics Olympiad Gold
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Technologies</div>
+            <div class="skills-list">
+              <span>Python</span>
+              <span>PyTorch</span>
+              <span>C++</span>
+              <span>CUDA</span>
+              <span>TensorRT</span>
+              <span>NumPy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <span class="section-title">Experience</span>
+      </div>
+      
+      <div class="experience-item">
+        <div class="experience-date">Summer 2025</div>
+        <div class="experience-content">
+          <h3>Google DeepMind</h3>
+          <div class="experience-role">AI Research Intern</div>
+          <p class="experience-desc">
+            Developing NLP models for sentiment-driven trading signals. 
+            Optimising transformer architectures for sub-millisecond inference 
+            on financial text streams.
+          </p>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-date">2024 — Present</div>
+        <div class="experience-content">
+          <h3>Durham Quantitative Research</h3>
+          <div class="experience-role">Research Lead</div>
+          <p class="experience-desc">
+            Building GPU-accelerated Monte Carlo options pricing engine. 
+            Achieved 200M+ simulations per second with real-time Greeks 
+            calculation via automatic differentiation.
+          </p>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-date">2024</div>
+        <div class="experience-content">
+          <h3>Durhack</h3>
+          <div class="experience-role">Team Lead — Winner: Best Use of AI</div>
+          <p class="experience-desc">
+            Built flight delay prediction system achieving 89% F1 score 
+            using ensemble methods on weather, historical, and live traffic data.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <span class="section-title">Projects</span>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3 class="project-title">Options Pricing Engine</h3>
+          <span class="project-metric">200M+ sims/sec</span>
+        </div>
+        <p class="project-desc">
+          GPU-accelerated Monte Carlo engine for exotic options pricing. 
+          Real-time Greeks calculation via automatic differentiation, 
+          integrated with live trading infrastructure.
+        </p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3 class="project-title">NLP Trading Signals</h3>
+          <span class="project-metric">1.5ms latency</span>
+        </div>
+        <p class="project-desc">
+          Transformer-based sentiment analysis for financial news streams. 
+          TensorRT optimisation achieving production-grade inference latency 
+          for real-time market signals.
+        </p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3 class="project-title">Market Making RL Agent</h3>
+          <span class="project-metric">+12% Sharpe</span>
+        </div>
+        <p class="project-desc">
+          Deep Q-Network for optimal quote placement in limit order books. 
+          Training on synthetic market microstructure data with realistic 
+          adverse selection dynamics.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <span class="section-title">Contact</span>
+      </div>
+      <div class="contact-content">
+        <h2>Let's build<br>something together</h2>
+        <a href="mailto:MMillward2012@gmail.com" class="contact-email">
+          MMillward2012@gmail.com
+        </a>
+        <div class="contact-links">
+          <a href="https://github.com/MMillward2012" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/matthew-millward-a1b077252" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; max-width: none; padding: 0;">
+      <p>© 2025 Matthew Millward</p>
+      <p>Durham, UK</p>
+    </div>
+  </footer>
+
+</body>
+</html>
