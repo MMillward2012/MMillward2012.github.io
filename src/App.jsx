@@ -14,6 +14,11 @@ function cn(...inputs) {
 
 function SmoothScroll({ children }) {
   useEffect(() => {
+    // Disable Lenis on mobile devices
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+    
+    if (isMobile) return
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
@@ -444,13 +449,13 @@ function App() {
         <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-8 flex justify-between items-start mix-blend-difference">
           <a href="#" className="flex flex-col hover:opacity-70 transition-opacity">
             <span className="text-base font-medium tracking-widest uppercase opacity-60">Matthew Millward</span>
-            <span className="text-base tracking-widest uppercase opacity-40 mt-1">Folio '25</span>
+            <span className="text-base tracking-widest uppercase opacity-40 mt-1 hidden md:block">Folio '25</span>
           </a>
-          <div className="flex gap-10 items-center">
+          <div className="flex gap-4 md:gap-10 items-center">
             <a 
               href="#about" 
               className={cn(
-                "text-base font-medium tracking-widest uppercase transition-colors duration-300",
+                "text-xs md:text-base font-medium tracking-widest uppercase transition-colors duration-300",
                 activeSection === 'about' ? "text-white opacity-100" : "text-white/60 hover:text-white hover:opacity-100"
               )}
             >
@@ -459,7 +464,7 @@ function App() {
             <a 
               href="#work" 
               className={cn(
-                "text-base font-medium tracking-widest uppercase transition-colors duration-300",
+                "text-xs md:text-base font-medium tracking-widest uppercase transition-colors duration-300",
                 activeSection === 'work' ? "text-white opacity-100" : "text-white/60 hover:text-white hover:opacity-100"
               )}
             >
@@ -468,17 +473,17 @@ function App() {
             <a 
               href="#contact" 
               className={cn(
-                "text-base font-medium tracking-widest uppercase transition-colors duration-300",
+                "text-xs md:text-base font-medium tracking-widest uppercase transition-colors duration-300",
                 activeSection === 'contact' ? "text-white opacity-100" : "text-white/60 hover:text-white hover:opacity-100"
               )}
             >
               Contact
             </a>
-            <a href="/Matthew_Millward_Resume.pdf" download className="flex items-center gap-2 text-base font-medium tracking-widest uppercase text-[#d4a853] hover:opacity-60 transition-opacity">
+            <a href="/Matthew_Millward_Resume.pdf" download className="flex items-center gap-2 text-xs md:text-base font-medium tracking-widest uppercase text-[#d4a853] hover:opacity-60 transition-opacity">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              Resume
+              <span className="hidden md:inline">Resume</span>
             </a>
           </div>
         </nav>
@@ -680,7 +685,7 @@ function App() {
                 </div>
                 <h2 className="text-[clamp(3rem,8vw,8rem)] leading-[0.9] font-medium tracking-tighter mb-4">
                   GET IN <br />
-                  <span className="text-[#666]">TOUCH</span>
+                  <span className="text-[#666] block mt-2">TOUCH</span>
                 </h2>
               </div>
               
